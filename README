@@ -4,13 +4,15 @@ Project: Circle of Life
 This project simulates (although unrealistically) interactions among different forms of life in the Amazon jungle. The rainforest jungle is represented by an NxN grid that changes over a number of cycles. Within a cycle, each square is occupied by one of the following five life forms:
 Jaguar (J), Puma (P), Deer (D), Grass (G), and Empty (E)
 An Empty square means that it is not occupied by any life form.
-Below is a jungle example as a 6x6 grid.
+
+Below is a jungle example as a 6x6 grid:
 P5 E E P0 E E
 J3 P1 J0 D0 G D0
 D0 E D2 J0 J2 G
 J0 E E D1 P0 E
 J1 E E G E D0
 G G E J0 D2 E
+
 Both row and column indices start from 0. In the example, the (1, 1)th square is occupied by a 1-year-old Puma. It has a 3×3 neighborhood centered at the square:
 P5 E E
 J3 P1 J0
@@ -22,21 +24,28 @@ Meanwhile, the (2, 0)th square D0 (a newborn Deer) has a 3×2 neighborhood:
 J3 P1
 D0 E
 J0 E
+
 Generally, the neighborhood of a square is a "3×3" grid which includes only those squares lying within the intersection of the jungle with a 3×3 window centered at the square. When a square is on the border, the dimension of its neighborhood reduces to 2×3, 3×2, or 2×2.
+
 2. Survival Rules
 The jungle evolves from one cycle to the next one. In the next cycle, the life form to reside on a square is decided by those life forms in the current cycle who live in the 3× 3 neighborhood centered at the square, under a set of survival rules. These rules are specified according to the life form residing on the same square in the current cycle. Jaguars, pumas, and deers will grow one year older in the next cycle.
 2.1 Jaguar
+
 A jaguar dies of old age or hunger, or from an attack when jaguars are considerably outnumbered by pumas in the neighborhood. The life form on a Jaguar square in the next cycle will be
+
 a) Empty if the Jaguar is at age 5 in the current cycle;
 b) otherwise, Puma, if there are at least twice as many Pumas as Jaguars in the neighborhood;
 c) otherwise, Empty, if Jaguars and Pumas together outnumber Deers in the neighborhood;
 d) otherwise, Jaguar (the Jaguar will live on).
 The new life form taking over the square, if a Puma, will have age 0 when the next cycle starts.
+
 For example, in the following neighborhood of a Jaguar at age 2:
 D0 G D0
 J0 J2 G
 D1 P0 E
+
 there are two Jaguars (including self), one Puma, and three Deers. Going down the rule list, rule d) applies. According to this rule, the central element (square) will still be J (Jaguar) --- one year older--- in the next cycle. In other words, J2 will be replaced with J3.
+
 2.2 Puma
 A Puma dies of old age, hunger, or a Jaguar attack. The life form on a Puma square in the next cycle will be
 a) Empty if the Puma is currently at age 4;
@@ -44,11 +53,14 @@ b) otherwise, Jaguar, if there are more Jaguars than Pumas in the neighborhood;
 c) otherwise, Empty, if Jaguars and Pumas together outnumber Deers in the neighborhood;
 d) otherwise, Puma (the Puma will live on).
 The new life form, if a Jaguar, will have age 0 when the next cycle begins.
+
 For example, in the following neighborhood of a Puma at age 1:
 P5 E E
 J3 P1 J0
 D0 E D2
-there are two Pumas, two Jaguars, and two Deers. Rule c) applies. The central square will become E in the next cycle.
+there are two Pumas, two Jaguars, and two Deers. 
+Rule c) applies. The central square will become E in the next cycle.
+
 2.3 Deer
 A Deer dies of old age or hunger. It may also be eaten by a Jaguar or a Puma. More
 specifically, the life form on a Deer square in the next cycle will be
@@ -57,17 +69,21 @@ b) otherwise, Empty if there is no Grass in the neighborhood (the Deer needs foo
 c) otherwise, Puma if in the neighborhood there are more Pumas and Jaguars together than Deers, and furthermore, if there are at least twice as many Pumas as Jaguars;
 d) otherwise, Jaguar if there are more Pumas and Jaquars together than Deers, and if there are at least as many Jaguars as Pumas;
 e) otherwise, Deer (the Deer will live on).
+
 If the new life form is a Jaguar or Puma, it will have age 0 when the next cycle starts.
 In the following neighborhood of a Deer at age 2:
 P1 J0 D0
 E D2 J0
 E E D1
+
 lives two Jaguars, one Puma, and three Deers. Rule a) does not apply because the Deer is only 2-years old. Rule b) does since there is no Grass in the neighborhood. The central element (square) will be E in the next cycle according to this rule.
+
 2.4 Grass
 Grass may be eaten out by overcrowded Deers. Deers may also multiply fast enough to take over the Grass square. In the next cycle, the life form on a Grass square will be
 a) Empty if at least three times as many Deers as Grasses in the neighborhood;
 b) otherwise, Deer if there are at least four Deers in the neighborhood;
 c) otherwise, Grass.
+
 If the new life form is a Deer, it will be aged 0 when the next cycle starts.
 For example, if the neighborhood of a Grass is
 P0 E E
@@ -81,11 +97,13 @@ b) otherwise, Puma, if more than one neighboring Puma;
 c) otherwise, Jaguar, if more than one neighboring Jaguar;
 d) otherwise, Grass, if at least one neighboring Grass;
 e) otherwise, Empty.
+
 If the new life form is a Jaguar, Puma, or Deer, it will have age 0 when the next cycle begins.
 For example, suppose that an Empty square in the top row of a jungle has the following neighborhood:
 P0 E E
 D0 G D0
 which includes two Deers. Thus, rule a) applies to change the central element to D0 in the next cycle.
+
 3. Task
 You will implement an abstract class Living to represent a generic life form. It has three subclasses Animal, Empty, and Grass. The first subclass, implementing the interface MyAge, is abstract, and needs to be extended to three subclasses: Jaguar, Puma, and Deer. You also need to implement a Jungle class which has a public member Living[][] to represent a grid jungle.
 The class CircleOfLife repeatedly simulates evolutions of input jungles, which are either randomly generated or read in from files. In each iteration, the class interacts with the user who chooses how the input jungle will be generated, and enters the number of cycles to simulate. The iteration prints out the initial jungle and the final jungle.
