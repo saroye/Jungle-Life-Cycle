@@ -1,4 +1,4 @@
-Project: Circle of Life
+## Project: Circle of Life
 1. Problem Description
 
 This project simulates (although unrealistically) interactions among different forms of life in the Amazon jungle. The rainforest jungle is represented by an NxN grid that changes over a number of cycles. Within a cycle, each square is occupied by one of the following five life forms:
