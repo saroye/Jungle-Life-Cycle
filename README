@@ -119,8 +119,8 @@ Jungle creation from an input file will weigh more than random creation in our g
 A new living form, if a Jaguar, Puma, or Deer, always has age 0 at its creation, whether initially by the class Jungle or later on under a survival rule. After surviving a cycle, its age increases by one.
 Templates are provided for all classes
 Below is a sample simulation scenario over three initial jungles. In the first iteration, the user entered 1 for a randomly generated jungle, 
-3 to specify the grid to be 33, and 1 to simulate just one cycle. The simulator printed out the initial and final jungles. The second iteration 
-simulated a randomly generated 66 grid over 8 cycles. In the third iteration, the user typed 2 for a file input, entered the file name "public3-10x10.txt",
+3 to specify the grid to be 3x3, and 1 to simulate just one cycle. The simulator printed out the initial and final jungles. The second iteration 
+simulated a randomly generated 6x6 grid over 8 cycles. In the third iteration, the user typed 2 for a file input, entered the file name "public3-10x10.txt",
 and specified 6 cycles. (The file public3-10x10.txt, describling a 10 x 10 grid, resides in the same folder containing the src folder.)
 After the third iteration, the user typed 3 to end the simulation. (Any number other than 1 and 2 could have ended the simulation.)
 Circle of Life in the Amazon Jungle
@@ -181,13 +181,3 @@ J0 E D0 D0 D2 D0 D1 D0 D1 D0
 E J0 J0 D0 D1 E P0 P1 D1 G
 E J0 P0 E P0 E P0 P0 G G
 E J0 P0 E P0 E E E G G
-Trial 4: 3
-Your code should print out the same text messages for user interactions.
-4. Input/Output Format
-The format for jungles is shown in the sample runs above subject to the following rules.
-a) Every square occupies two spaces starting with one of the letters 'D', 'E', 'G', ‘J’, and 'P'.
-b) If the letter is ‘D’, 'J', or 'P', then it is followed by a digit representing the animal’s age; otherwise, it is followed by a blank.
-c) There is exactly one blank between two squares, whether represented by a letter and a digit, or a letter and a blank. No blank lines.
-You may assume all input files to be correctly formatted, containing ‘D’, 'E', 'G', 'J', 'P', and digits up to 6 as the only non-blank characters. A digit will not exceed the lifespan of the animal represented by its preceding letter.
-5. Junit Classes
-JUnit classes include AnimalTest, CircleOfLifeTest, DeerTest, EmptyTest, GrassTest, JaguarTest, JungleTest, LivingTest, and PumaTest. You need to implement all these classes.
