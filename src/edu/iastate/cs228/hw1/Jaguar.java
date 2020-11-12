@@ -33,7 +33,7 @@ public class Jaguar extends Animal
 	}
 	
 	/**
-	 * A jaguar dies of old age or hunger, from isolation and attack by more numerous pumas.
+	 * A jaguar dies of old age or hunger, from isolation and attack by numerous pumas.
 	 *  
 	 * @param jNew     jungle in the next cycle
 	 * @return Living  life form occupying the square in the next cycle. 

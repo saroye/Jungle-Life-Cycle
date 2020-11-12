@@ -57,7 +57,7 @@ public class CircleOfLife
 		int trial = 1;
 		int cycles;
 		Scanner in = new Scanner(System.in);
-		System.out.println("Circle of Life in the Amazon Jungle. \nkeys: 1 (random jungle) 2 (file input) 3 (exit)");
+		System.out.println("Circle of Life in the Amazon Jungle. \nChoices:  \n1: Random Jungle \n2: File input \n3: Exit");
 		int key = in.nextInt();
 		while ( key < 3) 
 		{
@@ -66,11 +66,11 @@ public class CircleOfLife
 				System.out.println("Trial "+trial+": "+key);
 				trial++;
 				System.out.println("Random jungle");
-				System.out.print("Enter grid Width: ");
+				System.out.print("Enter grid Width: \n");
 				int size = in.nextInt();
 				even = new Jungle(size);
 				even.randomInit();
-				System.out.print("Enter the number of cycles: ");
+				System.out.print("Enter the number of cycles: \n");
 				cycles = in.nextInt();
 				System.out.println("Initial Jungle: \n");
 				System.out.println(even);
@@ -109,12 +109,10 @@ public class CircleOfLife
 				System.out.println("Initial Jungle: \n"+even.toString());
 				for(int i =0; i < cycles; i++)
 				{
-					if(i % 2 == 0)
-					{
+					if(i % 2 == 0){
 						updateJungle(even, odd);
 					}
-					else
-					{
+					else{
 						updateJungle(odd, even);
 					}
 				}
@@ -126,8 +124,8 @@ public class CircleOfLife
 				else{
 					System.out.println(odd);
 				}
-			}	
-		System.out.println("Trial "+trial+" : ");
+			}
+		System.out.println("Trial"+trial+": ");
 		key = in.nextInt();
 		}
 		
