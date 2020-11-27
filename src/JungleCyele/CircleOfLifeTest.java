@@ -1,18 +1,18 @@
 package JungleCyele;
 
+import java.io.FileNotFoundException;
 import static org.junit.Assert.*;
 
 import java.io.FileNotFoundException;
 
 import org.junit.Before;
 import org.junit.Test;
-
 public class CircleOfLifeTest {
 
 	@Before
 	public void setUp() throws FileNotFoundException 
 	{
-		Jungle jOld = new Jungle("/Users/Saroye/Documents/Spring'18/CS-228/project-1/edu/iastate/cs228/tests/test1.txt");
+		Jungle jOld = new Jungle("/Users/Saroye/Documents/jungleCycle/project-1/Jungle-Life-Cycle/tests/test1.txt");
 		Jungle jNew = new Jungle(jOld.getWidth());
 		jNew.grid[0][0] = new Grass(jNew,0,0);
 		jNew.grid[0][1] = new Empty(jNew,0,0);
